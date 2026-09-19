@@ -32,9 +32,9 @@
 # CUSTOM_PACKAGES="$CUSTOM_PACKAGES bandix luci-app-bandix luci-i18n-bandix-zh-cn"
 # 极光主题（可选）
 # CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-theme-aurora luci-app-aurora-config luci-i18n-aurora-config-zh-cn"
-
+这份配制文件帮我查一下，哪一些插件缺少中文语言支持
 # 去广告
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-adguardhome"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-adguardhome-zh-cn"
 
 # 代理（使用 passwall + 核心，目前仓库里有）
 CUSTOM_PACKAGES="$CUSTOM_PACKAGES geoview xray-core sing-box hysteria luci-i18n-passwall-zh-cn"
@@ -43,14 +43,14 @@ CUSTOM_PACKAGES="$CUSTOM_PACKAGES geoview xray-core sing-box hysteria luci-i18n-
 
 # VPN / 组网
 CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-proto-wireguard"
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-zerotier"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-zerotier-zh-cn"
 
 # 其他官方支持
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-diskman"
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-ttyd"
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-ocserv"
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-cloudflared"
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-openlist"  # alist 现在多叫 openlist
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-diskman-zh-cn"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-ttyd-zh-cn"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-ocserv-zh-cn"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-cloudflared-zh-cn"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-openlist-zh-cn"  # alist 现在多叫 openlist
 # ---------- 以下目前 25.12 仓库还没有，暂时不要打开 ----------
-# CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-netspeedtest"   # 包含 homebox
-# CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-pushbot"
+# CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-netspeedtest-zh-cn"   # 包含 homebox
+# CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-pushbot-zh-cn"
