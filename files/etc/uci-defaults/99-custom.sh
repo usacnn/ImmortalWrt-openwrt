@@ -39,6 +39,6 @@ echo "https://dl.openwrt.ai/packages-25.12/x86_64/kiddin9/" >> /etc/apk/reposito
 echo "kiddin9 source added" >> $LOGFILE
 
 # 给 update.sh 添加执行权限
-chmod +x /root/update.sh 2>/dev/null
+chmod +x /root/updata.sh 2>/dev/null
 
 exit 0
