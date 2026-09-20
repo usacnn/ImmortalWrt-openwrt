@@ -1,5 +1,5 @@
 #!/bin/sh
-# 刷机后网络通了再运行： sh /root/update.sh
+# 刷机后网络通了再运行： sh /root/updata.sh
 # 从 kiddin9 源安装 netspeedtest + pushbot，并安装 Open-Box
 
 echo "========================================"
