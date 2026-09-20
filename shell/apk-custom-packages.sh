@@ -52,5 +52,5 @@ CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-ocserv-zh-cn"
 CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-cloudflared-zh-cn"
 CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-openlist-zh-cn"  # alist 现在多叫 openlist
 # ---------- 以下目前 25.12 仓库还没有，暂时不要打开 ----------
-# CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-netspeedtest-zh-cn"   # 包含 homebox
-# CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-pushbot-zh-cn"
+# CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-netspeedtest-zh-cn"   # 网络测速包含 homebox
+# CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-pushbot-zh-cn"  #消息推送
