@@ -30,13 +30,8 @@ uci commit
 
 # 编译作者信息
 FILE_PATH="/etc/openwrt_release"
-NEW_DESCRIPTION="Packaged by wukongdaily"
+NEW_DESCRIPTION="Packaged by cia"
 sed -i "s/DISTRIB_DESCRIPTION='[^']*'/DISTRIB_DESCRIPTION='$NEW_DESCRIPTION'/" "$FILE_PATH" 2>/dev/null
-
-# ========== 添加 kiddin9 第三方源（插件最全）==========
-mkdir -p /etc/apk/repositories.d
-echo "https://dl.openwrt.ai/packages-25.12/x86_64/kiddin9/" >> /etc/apk/repositories.d/customfeeds.list
-echo "kiddin9 source added" >> $LOGFILE
 
 # 给 update.sh 添加执行权限
 chmod +x /root/updata.sh 2>/dev/null
