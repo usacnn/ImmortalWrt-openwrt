@@ -36,4 +36,16 @@ sed -i "s/DISTRIB_DESCRIPTION='[^']*'/DISTRIB_DESCRIPTION='$NEW_DESCRIPTION'/" "
 # 给 update.sh 添加执行权限
 chmod +x /root/updata.sh 2>/dev/null
 
+# 1. 自动将 dnsmasq 默认端口固定为 531
+uci set dhcp.@dnsmasq[0].port='531'
+# 3. 启用 AdGuard Home 开机自启
+/etc/init.d/adguardhome enable
+# 4. 开启 uHTTPd 的 HTTPS 443 支持
+uci add_list uhttpd.main.listen_https='0.0.0.0:443'
+uci add_list uhttpd.main.listen_https='[::]:443'
+uci set uhttpd.main.cert='/etc/config/ssl/fa.pem'
+uci set uhttpd.main.key='/etc/config/ssl/fa.key'
+uci commit uhttpd
+
+
 exit 0
