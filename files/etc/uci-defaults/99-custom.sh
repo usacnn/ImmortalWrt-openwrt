@@ -12,7 +12,7 @@ uci set network.lan.proto='static'
 uci set network.lan.ipaddr='10.10.10.230'
 uci set network.lan.netmask='255.255.255.0'
 uci set network.lan.gateway='10.10.10.253'
-uci set network.lan.dns='10.10.10.253'
+uci set network.lan.dns='10.10.10.250'
 
 # 关闭 DHCP（非常重要）
 uci set dhcp.lan.ignore='1'
