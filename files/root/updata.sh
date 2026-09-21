@@ -50,10 +50,10 @@ fi
 echo ">>> [2/3] 下载 luci-app-pushbot (主程序 + 中文语言包)..."
 # 采用 8 月底的纯 ucode 架构 IPK 包，Busybox tar 可以直接完美解包
 wget -O pushbot-main.ipk \
-  "https://gh-proxy.com/https://github.com/zzsj0928/luci-app-pushbot/releases/download/luci-app-pushbot_2026.08.28-1005_x64_IPK/luci-app-pushbot_5.17-r0_all.ipk"
+  "https://gh-proxy.com/https://github.com/zzsj0928/luci-app-pushbot/releases/download/luci-app-pushbot_2026.09.21-1713_x64_IPK/luci-app-pushbot_5.18-r9_all.ipk"
 
 wget -O pushbot-i18n.ipk \
-  "https://gh-proxy.com/https://github.com/zzsj0928/luci-app-pushbot/releases/download/luci-app-pushbot_2026.08.28-1005_x64_IPK/luci-i18n-pushbot-zh-cn_5.17-r0_all.ipk.ipk"
+  "https://gh-proxy.com/https://github.com/zzsj0928/luci-app-pushbot/releases/download/luci-app-pushbot_2026.09.21-1713_x64_IPK/luci-i18n-pushbot-zh-cn_5.18-r9_all.ipk"
 
 for ipk in pushbot-main.ipk pushbot-i18n.ipk; do
   if [ -f "$ipk" ]; then
