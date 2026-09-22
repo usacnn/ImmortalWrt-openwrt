@@ -54,6 +54,11 @@ uci set uhttpd.main.cert='/etc/config/ssl/fa.pem'
 uci set uhttpd.main.key='/etc/config/ssl/fa.key'
 uci commit uhttpd
 
+# ========== 6. Dnsmasq 避让端口与 AdGuard Home 自启 ==========
+# 自动将 dnsmasq 默认端口固定为 531，避让 53 端口给 ADG
+uci set dhcp.@dnsmasq[0].port='531'
+uci commit dhcp
+
 # 开启 AdGuard Home 自启（如果存在服务文件）
 [ -f "/etc/init.d/adguardhome" ] && /etc/init.d/adguardhome enable
 
