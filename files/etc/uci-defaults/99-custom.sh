@@ -58,8 +58,10 @@ NEW_DESCRIPTION="Packaged by cia"
 uci -q delete uhttpd.main.listen_https
 uci add_list uhttpd.main.listen_https='0.0.0.0:443'
 uci add_list uhttpd.main.listen_https='[::]:443'
-uci set uhttpd.main.cert='/etc/config/ssl/fa.pem'
-uci set uhttpd.main.key='/etc/config/ssl/fa.key'
+if [ -f "/etc/config/ssl/fa.pem" ] && [ -f "/etc/config/ssl/fa.key" ]; then
+    uci set uhttpd.main.cert='/etc/config/ssl/fa.pem'
+    uci set uhttpd.main.key='/etc/config/ssl/fa.key'
+fi
 uci commit uhttpd
 
 
