@@ -17,14 +17,21 @@ uci commit network
 # 关闭 IPv4 DHCP
 uci set dhcp.lan.ignore='1'
 
-# 彻底禁用 IPv6 路由通告 (RA)、DHCPv6 和 NDP 代理
+# 彻底禁用 IPv6 路由通告 (RA)、DHCPv6 和 NDP 代理 及学习路由
 uci set dhcp.lan.ra='disabled'
 uci set dhcp.lan.dhcpv6='disabled'
 uci set dhcp.lan.ndp='disabled'
+uci delete dhcp.lan.learn_routes 2>/dev/null
 
-# 关闭全局 IPv6 管理服务
+# 避让 53 端口给 AdGuard Home，将 dnsmasq 改为 531
+uci set dhcp.@dnsmasq[0].port='531'
+
+# 清理 dhcp 配置文件中对 odhcpd 服务的引用
 uci delete dhcp.odhcpd 2>/dev/null
 uci commit dhcp
+
+# 移除 odhcpd 开机自启软链接（等效于执行 disable）
+/etc/init.d/odhcpd disable 2>/dev/null
 
 # ========== 3. 旁路由防火墙防死锁配置 ==========
 # 开启 LAN 口 IP 动态伪装与 MSS 钳制（保证转发流量有去有回不丢包）
@@ -36,7 +43,8 @@ uci commit firewall
 # 允许所有接口访问网页终端与 SSH
 uci delete ttyd.@ttyd[0].interface 2>/dev/null
 uci set dropbear.@dropbear[0].Interface='' 2>/dev/null
-uci commit
+uci commit ttyd 2>/dev/null
+uci commit dropbear
 
 # 修改版本描述信息
 FILE_PATH="/etc/openwrt_release"
@@ -44,7 +52,7 @@ NEW_DESCRIPTION="Packaged by cia"
 [ -f "$FILE_PATH" ] && sed -i "s/DISTRIB_DESCRIPTION='[^']*'/DISTRIB_DESCRIPTION='$NEW_DESCRIPTION'/" "$FILE_PATH"
 
 # 赋予升级脚本执行权限
-[ -f "/root/updata.sh" ] && chmod +x /root/updata.sh
+[ -f "/root/update.sh" ] && chmod +x /root/update.sh
 
 # ========== 5. Web 与 HTTPS 面板配置 ==========
 uci -q delete uhttpd.main.listen_https
@@ -54,13 +62,9 @@ uci set uhttpd.main.cert='/etc/config/ssl/fa.pem'
 uci set uhttpd.main.key='/etc/config/ssl/fa.key'
 uci commit uhttpd
 
-# ========== 6. Dnsmasq 避让端口与 AdGuard Home 自启 ==========
-# 自动将 dnsmasq 默认端口固定为 531，避让 53 端口给 ADG
-uci set dhcp.@dnsmasq[0].port='531'
-uci commit dhcp
 
-# 开启 AdGuard Home 自启（如果存在服务文件）
-[ -f "/etc/init.d/adguardhome" ] && /etc/init.d/adguardhome enable
+# ========== 6. AdGuard Home 开机自启 ==========
+[ -f "/etc/init.d/adguardhome" ] && /etc/init.d/adguardhome enable 2>/dev/null
 
 echo "Finished 99-custom.sh at $(date)" >> "$LOGFILE"
 exit 0
